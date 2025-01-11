@@ -7,14 +7,32 @@ import { AttributeEntity } from "./attribute.entity";
 export class CategoryEntity {
     @PrimaryGeneratedColumn()
     id?: number;
-    @Column()
+    @Column(
+        {
+            type: 'varchar',
+            nullable: false,
+            unique: true
+        }
+    )
     name: string;
     @TreeParent()
     parent?: CategoryEntity;
     @TreeChildren()
     children?: CategoryEntity[];
-    @OneToMany(() => AttributeEntity, (a) => a.category)
-    attributes: AttributeEntity[];
-    @OneToMany(() => CategoryItemEntity, (i) => i.category)
-    items: CategoryItemEntity[]
+    @OneToMany(
+        () => AttributeEntity,
+        (a) => a.category,
+        {
+            cascade: true,
+        }
+    )
+    attributes?: AttributeEntity[];
+    @OneToMany(
+        () => CategoryItemEntity,
+        (i) => i.category,
+        {
+            cascade: true
+        }
+    )
+    items?: CategoryItemEntity[]
 }

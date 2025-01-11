@@ -6,7 +6,7 @@ import { CategoryEntity } from "./category.entity";
 )
 export class AttributeEntity {
     @PrimaryGeneratedColumn()
-    id: number;
+    id?: number;
     @Column()
     name: string;
     @Column({
