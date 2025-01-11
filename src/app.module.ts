@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
+import { DataBaseConfig } from './infrastucture/config/database-config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: ['.local.env']
-    })
+    }),
+    TypeOrmModule.forRoot(DataBaseConfig.getDataBaseConfig())
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule { }
