@@ -1,10 +1,9 @@
-import { Injectable } from "@nestjs/common";
-import { CategoryQuery } from "src/application/dto/req/category-query.dto";
-import { CategoryRes } from "src/application/dto/res/category-res.dto";
-import { CategoryMapper } from "src/application/mapper/category.mapper";
-import { ICategoryOption } from "src/domain/category-option";
-import { CategoryEntity } from "src/domain/entities/category.entity";
-import { CategoryInterface } from "src/domain/interfaces/category.interface";
+import { Injectable, NotFoundException } from "@nestjs/common";
+import { CategoryQuery } from "../../dto/req/category-query.dto";
+import { CategoryRes } from "../../dto/res/category-res.dto";
+import { ICategoryOption } from "../../../domain/category-option";
+import { CategoryEntity } from "../../../domain/entities/category.entity";
+import { CategoryInterface } from "../../../domain/interfaces/category.interface";
 
 @Injectable()
 export class CategoryLoad {
@@ -20,5 +19,14 @@ export class CategoryLoad {
         }
 
         return await this.categoryRepository.findAll();
+    }
+
+    async loadById(id: number): Promise<CategoryEntity> {
+        const category = await this.categoryRepository.findById(id);
+        if (category === undefined) {
+            throw new NotFoundException(`category id ${id} not found`);
+        }
+
+        return category;
     }
 }

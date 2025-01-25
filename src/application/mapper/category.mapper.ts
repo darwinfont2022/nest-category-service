@@ -4,6 +4,9 @@ import { CategoryRes } from "../dto/res/category-res.dto";
 
 export class CategoryMapper {
     public static toEntity(dto: CategoryReq, parent?: CategoryEntity): CategoryEntity {
+        if (!dto) {
+            return;
+        }
         return {
             name: dto.name,
             parent

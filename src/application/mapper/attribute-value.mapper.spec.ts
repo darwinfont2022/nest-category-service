@@ -1,5 +1,5 @@
 import { ValueEntity } from "src/domain/entities/value.entity"
-import { AttributeValueReq } from "../dto/req/attribute-value-req.dto"
+import { AttributeValueReq } from "../dto/req/attribute-value/attribute-value-req.dto"
 import { AttributeValueMapper } from "./attribute-value.mapper"
 import { AttributeValueRes } from "../dto/res/attribute-value-req"
 

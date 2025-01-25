@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { ICategoryOption } from "src/domain/category-option";
-import { CategoryEntity } from "src/domain/entities/category.entity";
-import { CategoryInterface } from "src/domain/interfaces/category.interface";
+import { ICategoryOption } from "../../domain/category-option";
+import { CategoryEntity } from "../../domain/entities/category.entity";
+import { CategoryInterface } from "../../domain/interfaces/category.interface";
 import { UpdateResult, DeleteResult, Repository, Or, TreeRepository, Like } from "typeorm";
 
 @Injectable()

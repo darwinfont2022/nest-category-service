@@ -1,12 +1,13 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, Unique } from "typeorm";
 import { AttributeEntity } from "./attribute.entity";
 @Entity(
     'attribute_value'
 )
+@Unique(['attribute', 'name'])
 export class ValueEntity {
     @PrimaryGeneratedColumn()
     id?: number;
-    @Column()
+    @PrimaryColumn()
     name: string;
     @Column()
     value: string;

@@ -1,9 +1,9 @@
-import { Injectable } from "@nestjs/common";
-import { TypeOrmModuleOptions } from "@nestjs/typeorm";
-import { AttributeEntity } from "src/domain/entities/attribute.entity";
-import { CategoryEntity } from "src/domain/entities/category.entity";
-import { CategoryItemEntity } from "src/domain/entities/item.entity";
-import { ValueEntity } from "src/domain/entities/value.entity";
+import { Injectable, Type } from "@nestjs/common";
+import { TypeOrmModule, TypeOrmModuleOptions } from "@nestjs/typeorm";
+import { AttributeEntity } from "../../domain/entities/attribute.entity";
+import { CategoryEntity } from "../../domain/entities/category.entity";
+import { CategoryItemEntity } from "../../domain/entities/item.entity";
+import { ValueEntity } from "../../domain/entities/value.entity";
 
 export class DataBaseConfig {
 

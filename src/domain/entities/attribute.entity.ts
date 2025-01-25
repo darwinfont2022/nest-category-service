@@ -1,19 +1,26 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn, Unique } from "typeorm";
 import { ValueEntity } from "./value.entity";
 import { CategoryEntity } from "./category.entity";
 @Entity(
     'category_attribute'
 )
+@Unique(['category', 'name'])
 export class AttributeEntity {
     @PrimaryGeneratedColumn()
     id?: number;
-    @Column()
+    @PrimaryColumn()
     name: string;
     @Column({
         type: "bool",
         default: false
     })
     fix: boolean;
+    @Column({
+        type: 'varchar',
+        length: 15,
+        nullable: true,
+    })
+    fix_value?: string;
     @Column({
         type: "bool",
         default: false
